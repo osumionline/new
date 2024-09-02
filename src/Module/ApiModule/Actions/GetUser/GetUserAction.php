@@ -19,7 +19,7 @@ class GetUserAction extends OAction {
 	 */
 	public function run(ORequest $req):void {
 		$status = 'ok';
-		$user = $this->User_service->getUser($req->getParamInt('id'));
+		$user = $this->service['User']->getUser($req->getParamInt('id'));
 
 		if (is_null($user)) {
 			$status = 'error';

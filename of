@@ -18,7 +18,6 @@ function taskOptions(array $ofw_task_list, array $app_task_list): string {
 	$ret .= OTools::getMessage('OFW_OPTIONS');
 	asort($ofw_task_list);
 	foreach ($ofw_task_list as $task) {
-		$core->taskEagerLoader($core->config->getDir('ofw_task').$task.'.task.php');
 		$task_name = "\\Osumi\\OsumiFramework\\Task\\".$task."Task";
 		$task = new $task_name;
 		$task->loadTask();
@@ -26,7 +25,6 @@ function taskOptions(array $ofw_task_list, array $app_task_list): string {
 	}
 	asort($app_task_list);
 	foreach ($app_task_list as $task) {
-		$core->taskEagerLoader($core->config->getDir('app_task').$task.'.task.php');
 		$task_name = "\\Osumi\\OsumiFramework\\App\\Task\\".$task."Task";
 		$task = new $task_name;
 		$task->loadTask();
@@ -88,8 +86,6 @@ if (in_array($option, $app_task_list)) {
 	$task_name = "\\Osumi\\OsumiFramework\\App\\Task\\".$option.'Task';
 	$task_file = $core->config->getDir('app_task').$option.'.task.php';
 }
-
-$core->taskEagerLoader($task_file);
 
 $task = new $task_name;
 $task->loadTask();

@@ -25,8 +25,8 @@ class UserAction extends OAction {
 			exit;
 		}
 		$id_user = $req->getIdUser();
-		$user = $this->User_service->getUser($id_user);
-		$list = $this->Photo_service->getPhotos($user->get('id'));
+		$user = $this->service['User']->getUser($id_user);
+		$list = $this->service['Photo']->getPhotos($user->get('id'));
 
 		$photo_list_component = new PhotoListComponent(['list'=>$list]);
 

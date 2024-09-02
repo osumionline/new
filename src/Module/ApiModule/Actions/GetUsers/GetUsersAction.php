@@ -18,6 +18,6 @@ class GetUsersAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$this->getTemplate()->addModelComponentList('list', $this->User_service->getUsers(), ['pass']);
+		$this->getTemplate()->addModelComponentList('list', $this->service['User']->getUsers(), ['pass']);
 	}
 }
