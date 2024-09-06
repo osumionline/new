@@ -5,7 +5,7 @@ namespace Osumi\OsumiFramework\App\Module\HomeModule\Actions\Start;
 use Osumi\OsumiFramework\Routing\OModuleAction;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
-use Osumi\OsumiFramework\App\Component\Home\UsersComponent\UsersComponent;
+use Osumi\OsumiFramework\App\Component\Home\Users\UsersComponent;
 
 #[OModuleAction(
 	url: '/',

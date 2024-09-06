@@ -6,7 +6,7 @@ use Osumi\OsumiFramework\Routing\OModuleAction;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
 use Osumi\OsumiFramework\App\DTO\UserDTO;
-use Osumi\OsumiFramework\App\Component\Home\PhotoListComponent\PhotoListComponent;
+use Osumi\OsumiFramework\App\Component\Home\PhotoList\PhotoListComponent;
 
 #[OModuleAction(
 	url: '/user/:id',
