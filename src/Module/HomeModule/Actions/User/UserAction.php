@@ -13,6 +13,9 @@ use Osumi\OsumiFramework\App\Component\Home\PhotoList\PhotoListComponent;
 	services: ['User', 'Photo']
 )]
 class UserAction extends OAction {
+	public string $name = '';
+	public ?PhotoListComponent $photo_list = null;
+
 	/**
 	 * User's page
 	 *
@@ -28,9 +31,7 @@ class UserAction extends OAction {
 		$user = $this->service['User']->getUser($id_user);
 		$list = $this->service['Photo']->getPhotos($user->get('id'));
 
-		$photo_list_component = new PhotoListComponent(['list'=>$list]);
-
-		$this->getTemplate()->add('name', $user->get('user'));
-		$this->getTemplate()->add('photo_list', $photo_list_component);
+		$this->name = $user->get('user');
+		$this->photo_list = new PhotoListComponent(['list'=>$list]);
 	}
 }

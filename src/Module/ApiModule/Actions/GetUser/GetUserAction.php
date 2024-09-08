@@ -5,12 +5,16 @@ namespace Osumi\OsumiFramework\App\Module\ApiModule\Actions\GetUser;
 use Osumi\OsumiFramework\Routing\OModuleAction;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
+use Osumi\OsumiFramework\App\Component\Model\User\UserComponent;
 
 #[OModuleAction(
 	url: '/getUser/:id',
 	services: ['User']
 )]
 class GetUserAction extends OAction {
+	public string status = 'ok';
+	public ?UserComponent user = null;
+
 	/**
 	 * Function used to get a user's data
 	 *
@@ -18,14 +22,14 @@ class GetUserAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$status = 'ok';
 		$user = $this->service['User']->getUser($req->getParamInt('id'));
+		$this->user = new UserComponent(['User' => null]);
 
 		if (is_null($user)) {
-			$status = 'error';
+			$this->status = 'error';
 		}
-
-		$this->getTemplate()->add('status', $status);
-		$this->getTemplate()->addModelComponent('user', $user, ['pass'], ['score']);
+		else {
+			$this->user->setValue('User', $user);
+		}
 	}
 }

@@ -11,6 +11,8 @@ use Osumi\OsumiFramework\Web\ORequest;
 	services: ['User']
 )]
 class GetDateAction extends OAction {
+	public string $date = '';
+
 	/**
 	 * Function used to obtain current date
 	 *
@@ -18,6 +20,6 @@ class GetDateAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$this->getTemplate()->add('date', $this->service['User']->getLastUpdate());
+		$this->date = $this->service['User']->getLastUpdate();
 	}
 }
