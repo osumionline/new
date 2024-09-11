@@ -2,15 +2,10 @@
 
 namespace Osumi\OsumiFramework\App\Module\ApiModule\Actions\GetUser;
 
-use Osumi\OsumiFramework\Routing\OModuleAction;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
 use Osumi\OsumiFramework\App\Component\Model\User\UserComponent;
 
-#[OModuleAction(
-	url: '/getUser/:id',
-	services: ['User']
-)]
 class GetUserAction extends OAction {
 	public string status = 'ok';
 	public ?UserComponent user = null;

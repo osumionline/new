@@ -1,17 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Osumi\OsumiFramework\App\Module\HomeModule\Actions\User;
+namespace Osumi\OsumiFramework\App\Module\Home\User;
 
-use Osumi\OsumiFramework\Routing\OModuleAction;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
 use Osumi\OsumiFramework\App\DTO\UserDTO;
 use Osumi\OsumiFramework\App\Component\Home\PhotoList\PhotoListComponent;
 
-#[OModuleAction(
-	url: '/user/:id',
-	services: ['User', 'Photo']
-)]
 class UserAction extends OAction {
 	public string $name = '';
 	public ?PhotoListComponent $photo_list = null;

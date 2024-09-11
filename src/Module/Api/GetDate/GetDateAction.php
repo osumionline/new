@@ -1,15 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Osumi\OsumiFramework\App\Module\ApiModule\Actions\GetDate;
+namespace Osumi\OsumiFramework\App\Module\Api\GetDate;
 
-use Osumi\OsumiFramework\Routing\OModuleAction;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
 
-#[OModuleAction(
-	url: '/getDate',
-	services: ['User']
-)]
 class GetDateAction extends OAction {
 	public string $date = '';
 

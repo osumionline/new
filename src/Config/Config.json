@@ -21,9 +21,6 @@
 		"user": "inigo.gorosabel@gmail.com",
 		"pass": "password"
 	},
-	"error_pages": {
-		"404": ""
-	},
 	"css": ["common"],
 	"ext_css": [],
 	"js": ["common"],
