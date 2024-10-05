@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Osumi\OsumiFramework\App\Module\ApiModule\Actions\GetUser;
+namespace Osumi\OsumiFramework\App\Module\Api\GetUser;
 
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;

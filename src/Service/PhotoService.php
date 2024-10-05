@@ -8,13 +8,6 @@ use Osumi\OsumiFramework\App\Model\Photo;
 
 class PhotoService extends OService {
 	/**
-	 * Load service tools
-	 */
-	function __construct() {
-		$this->loadService();
-	}
-
-	/**
 	 * Get given user's photo list
 	 *
 	 * @param int $id User's Id

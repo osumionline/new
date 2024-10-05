@@ -8,13 +8,6 @@ use Osumi\OsumiFramework\App\Model\User;
 
 class UserService extends OService {
 	/**
-	 * Load service tools
-	 */
-	function __construct() {
-		$this->loadService();
-	}
-
-	/**
 	 * Get current date and time
 	 *
 	 * @return string Current date and time
