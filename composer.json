@@ -14,7 +14,7 @@
   ],
   "require": {
     "php": ">=8.2",
-    "osumionline/framework": "^9.0"
+    "osumionline/framework": "^9.1.0"
   },
   "autoload": {
     "psr-4": {
