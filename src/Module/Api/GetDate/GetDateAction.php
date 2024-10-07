@@ -4,9 +4,16 @@ namespace Osumi\OsumiFramework\App\Module\Api\GetDate;
 
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
+use Osumi\OsumiFramework\App\Service\UserService;
 
 class GetDateAction extends OAction {
+	private ?UserService $us = null;
+
 	public string $date = '';
+
+	public function __construct() {
+		$this->us = inject(UserService::class);
+	}
 
 	/**
 	 * Function used to obtain current date
@@ -15,6 +22,6 @@ class GetDateAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$this->date = $this->service['User']->getLastUpdate();
+		$this->date = $this->us->getLastUpdate();
 	}
 }

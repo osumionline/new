@@ -22,6 +22,20 @@ class EmailTask extends OTask {
 		'contact'              => 'Email sent to us when a customer uses the contact form.'
 	];
 
+	private function sendWelcome(): void {}
+
+	private function sendLostPassword(): void {}
+
+	private function sendOrderOk(): void {}
+
+	private function sendPaymentReceived(): void {}
+
+	private function sendOrderShipped(): void {}
+
+	private function sendOrderAddressChange(): void {}
+
+	private function sendContact(): void {}
+
 	/**
 	 * Runs the task, checks given parameters and sends the appropiate email
 	 *
@@ -30,16 +44,16 @@ class EmailTask extends OTask {
 	 * @return void
 	 */
 	public function run(array $options=[]): void {
-		if (count($options)==0) {
+		if (count($options) === 0) {
 			echo "\nYou have to choose (at least) an option.\n\n";
 			echo "  Options:\n";
 			foreach ($this->email_list as $option => $text) {
 				echo "  ·  ".$option.": ".$text."\n";
 			}
-			echo "\Eg: ofw email welcome contact\n\n";
+			echo "\nEg: ofw email welcome contact\n\n";
 			exit;
 		}
-		foreach ($options as $option) {
+		foreach ($options as $key => $option) {
 			if (!array_key_exists($option, $this->email_list)) {
 				echo "---------------------------------------\n";
 				echo "ERROR: Option ".$option." does not exist.\n";
@@ -58,18 +72,4 @@ class EmailTask extends OTask {
 			}
 		}
 	}
-
-	private function sendWelcome(): void {}
-
-	private function sendLostPassword(): void {}
-
-	private function sendOrderOk(): void {}
-
-	private function sendPaymentReceived(): void {}
-
-	private function sendOrderShipped(): void {}
-
-	private function sendOrderAddressChange(): void {}
-
-	private function sendContact(): void {}
 }

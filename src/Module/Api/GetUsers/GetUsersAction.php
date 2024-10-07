@@ -4,10 +4,17 @@ namespace Osumi\OsumiFramework\App\Module\Api\GetUsers;
 
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
+use Osumi\OsumiFramework\App\Service\UserService;
 use Osumi\OsumiFramework\App\Component\Model\UserList\UserListComponent;
 
 class GetUsersAction extends OAction {
+	private ?UserService $us = null;
+
 	public ?UserListComponent $list = null;
+
+	public function __construct() {
+		$this->us = inject(UserService::class);
+	}
 
 	/**
 	 * Function used to get the user list
@@ -16,6 +23,6 @@ class GetUsersAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$this->list = new UserListComponent(['list' => $this->service['User']->getUsers()]);
+		$this->list = new UserListComponent(['list' => $this->us->getUsers()]);
 	}
 }

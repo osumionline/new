@@ -5,11 +5,21 @@ namespace Osumi\OsumiFramework\App\Module\Home\User;
 use Osumi\OsumiFramework\Routing\OAction;
 use Osumi\OsumiFramework\Web\ORequest;
 use Osumi\OsumiFramework\App\DTO\UserDTO;
+use Osumi\OsumiFramework\App\Service\UserService;
+use Osumi\OsumiFramework\App\Service\PhotoService;
 use Osumi\OsumiFramework\App\Component\Home\PhotoList\PhotoListComponent;
 
 class UserAction extends OAction {
+	private ?UserService  $us = null;
+	private ?PhotoService $ps = null;
+
 	public string $name = '';
 	public ?PhotoListComponent $photo_list = null;
+
+	public function __construct() {
+		$this->us = inject(UserService::class);
+		$this->ps = inject(PhotoService::class);
+	}
 
 	/**
 	 * User's page
@@ -23,8 +33,8 @@ class UserAction extends OAction {
 			exit;
 		}
 		$id_user = $req->getIdUser();
-		$user = $this->service['User']->getUser($id_user);
-		$list = $this->service['Photo']->getPhotos($user->get('id'));
+		$user = $this->us->getUser($id_user);
+		$list = $this->ps->getPhotos($user->get('id'));
 
 		$this->name = $user->get('user');
 		$this->photo_list = new PhotoListComponent(['list'=>$list]);
