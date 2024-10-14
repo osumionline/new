@@ -3,12 +3,12 @@
 namespace Osumi\OsumiFramework\Routes;
 
 use Osumi\OsumiFramework\Routing\ORoute;
-use Osumi\OsumiFramework\App\Module\Api\GetDate\GetDateAction;
-use Osumi\OsumiFramework\App\Module\Api\GetUser\GetUserAction;
-use Osumi\OsumiFramework\App\Module\Api\GetUsers\GetUsersAction;
+use Osumi\OsumiFramework\App\Module\Api\GetDate\GetDateComponent;
+use Osumi\OsumiFramework\App\Module\Api\GetUser\GetUserComponent;
+use Osumi\OsumiFramework\App\Module\Api\GetUsers\GetUsersComponent;
 
-ORoute::group('/api', 'json', function() {
-  ORoute::get('/get-date',     GetDateAction::class);
-  ORoute::get('/get-user/:id', GetUserAction::class);
-  ORoute::get('/get-users',    GetUsersAction::class);
+ORoute::prefix('/api', function() {
+  ORoute::get('/get-date',     GetDateComponent::class);
+  ORoute::get('/get-user/:id', GetUserComponent::class);
+  ORoute::get('/get-users',    GetUsersComponent::class);
 });

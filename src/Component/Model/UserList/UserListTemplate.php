@@ -1,10 +1,10 @@
 <?php
 use Osumi\OsumiFramework\App\Component\Model\User\UserComponent;
 
-foreach ($values['list'] as $i => $User) {
-  $component = new UserComponent([ 'User' => $User ]);
+foreach ($list as $i => $user) {
+  $component = new UserComponent(['user' => $user]);
 	echo strval($component);
-	if ($i<count($values['list'])-1) {
+	if ($i < count($list) - 1) {
 		echo ",\n";
 	}
 }

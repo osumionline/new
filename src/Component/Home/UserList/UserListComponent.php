@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Osumi\OsumiFramework\App\Component\Home\PhotoList;
+namespace Osumi\OsumiFramework\App\Component\Home\UserList;
 
 use Osumi\OsumiFramework\Core\OComponent;
 
-class PhotoListComponent extends OComponent {
+class UserListComponent extends OComponent {
 	public array $list = [];
 
 	public function __construct($vars) {
 		parent::__construct($vars);
-		$this->addInlineCss('photo_list');
+		$this->addInlineCss('Users');
 	}
 }

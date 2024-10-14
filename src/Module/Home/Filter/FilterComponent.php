@@ -2,10 +2,10 @@
 
 namespace Osumi\OsumiFramework\App\Module\Home\Filter;
 
-use Osumi\OsumiFramework\Routing\OAction;
+use Osumi\OsumiFramework\Core\OComponent;
 use Osumi\OsumiFramework\Web\ORequest;
 
-class FilterAction extends OAction {
+class FilterComponent extends OComponent {
 	/**
 	 * Test page for filters
 	 *

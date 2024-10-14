@@ -1,6 +1,6 @@
-<?php if (count($values['list'])>0): ?>
+<?php if (count($list) > 0): ?>
 	<ul class="photos">
-<?php foreach ($values['list'] as $photo): ?>
+<?php foreach ($list as $photo): ?>
 		<li>
 			<a href="<?php echo $photo->get('url') ?>" rel="noreferrer" target="_blank">
 				<img src="/photo/<?php echo $photo ?>" alt="<?php echo $photo->get('alt') ?>">

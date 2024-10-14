@@ -2,20 +2,22 @@
 
 namespace Osumi\OsumiFramework\App\Module\Api\GetUser;
 
-use Osumi\OsumiFramework\Routing\OAction;
+use Osumi\OsumiFramework\Core\OComponent;
 use Osumi\OsumiFramework\Web\ORequest;
 use Osumi\OsumiFramework\App\Service\UserService;
 use Osumi\OsumiFramework\App\Component\Model\User\UserComponent;
 
-class GetUserAction extends OAction {
+class GetUserComponent extends OComponent {
 	private ?UserService $us = null;
 
 	public string $status = 'ok';
 	public ?UserComponent $user = null;
 
 	public function __construct() {
+		parent::__construct();
+
 		$this->us = inject(UserService::class);
-		$this->user = new UserComponent(['User' => null]);
+		$this->user = new UserComponent();
 	}
 
 	/**
@@ -25,13 +27,13 @@ class GetUserAction extends OAction {
 	 * @return void
 	 */
 	public function run(ORequest $req):void {
-		$user = $this->us->getUser($req->getParamInt('id'));
+		$u = $this->us->getUser($req->getParamInt('id'));
 
-		if (is_null($user)) {
+		if (is_null($u)) {
 			$this->status = 'error';
 		}
 		else {
-			$this->user->setValue('User', $user);
+			$this->user->user = $u;
 		}
 	}
 }
