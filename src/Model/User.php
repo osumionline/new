@@ -2,86 +2,73 @@
 
 namespace Osumi\OsumiFramework\App\Model;
 
-use Osumi\OsumiFramework\DB\OModel;
-use Osumi\OsumiFramework\DB\OModelGroup;
-use Osumi\OsumiFramework\DB\OModelField;
+use Osumi\OsumiFramework\ORM\OModel;
+use Osumi\OsumiFramework\ORM\OPK;
+use Osumi\OsumiFramework\ORM\OField;
+use Osumi\OsumiFramework\ORM\OCreatedAt;
+use Osumi\OsumiFramework\ORM\OUpdatedAt;
 
 class User extends OModel {
-	/**
-	 * Configures current model object based on data-base table structure
-	 */
-	function __construct() {
-		$model = new OModelGroup(
-			new OModelField(
-				name: 'id',
-				type: OMODEL_PK,
-				comment: 'Unique id for each user'
-			),
-			new OModelField(
-				name: 'user',
-				type: OMODEL_TEXT,
-				nullable: false,
-				comment: 'Users name',
-				set_function: ['User', 'to_uppercase']
-			),
-			new OModelField(
-				name: 'pass',
-				type: OMODEL_TEXT,
-				size: 100,
-				nullable: false,
-				comment: 'Users password'
-			),
-			new OModelField(
-				name: 'num_photos',
-				type: OMODEL_NUM,
-				default: 0,
-				nullable: false,
-				comment: 'Number of photos a user has'
-			),
-			new OModelField(
-				name: 'score',
-				type: OMODEL_FLOAT,
-				nullable: false,
-				default: 0,
-				comment: 'Users score'
-			),
-			new OModelField(
-				name: 'active',
-				type: OMODEL_BOOL,
-				default: true,
-				nullable: false,
-				comment: 'User is active 1 or not 0'
-			),
-			new OModelField(
-				name: 'last_login',
-				type: OMODEL_DATE,
-				nullable: false,
-				comment: 'Last date a user signed in'
-			),
-			new OModelField(
-				name: 'notes',
-				type: OMODEL_LONGTEXT,
-				comment: 'Notes on the user'
-			),
-			new OModelField(
-				name: 'created_at',
-				type: OMODEL_CREATED,
-				comment: 'Register creation date'
-			),
-			new OModelField(
-				name: 'updated_at',
-				type: OMODEL_UPDATED,
-				comment: 'Registers last update date'
-			)
-		);
+	#[OPK(
+		comment: 'Unique id for each user'
+	)]
+	public ?int $id;
 
-		parent::load($model);
-	}
+	#[OField(
+		comment: 'User name',
+		nullable: false
+	)]
+	public ?string $user;
 
-	public static function to_uppercase(string | null $value): string | null {
-		if (is_null($value)) {
-			return null;
-		}
-		return strtoupper($value);
-	}
+	#[OField(
+		comment: 'User password',
+		nullable: false,
+		max: 100,
+		visible: false
+	)]
+	public ?string $pass;
+
+	#[OField(
+		comment: 'Number of photos user has',
+		nullable: false,
+		default: 0
+	)]
+	public ?int $num_photos;
+
+	#[OField(
+		comment: 'User score',
+		nullable: false,
+		default: 0
+	)]
+	public ?float $score;
+
+	#[OField(
+		comment: 'User is active 1 or not 0',
+		nullable: false,
+		default: true
+	)]
+	public ?bool $active;
+
+	#[OField(
+		type: OField::DATE,
+		comment: 'Last date user signed in',
+		nullable: false
+	)]
+	public ?string $last_login;
+
+	#[OField(
+		type: OField::LONGTEXT,
+		comment: 'Notes on the user'
+	)]
+	public ?string $notes;
+
+	#[OCreatedAt(
+		comment: 'Register creation date'
+	)]
+	public ?string $created_at;
+
+	#[OUpdatedAt(
+		comment: 'Last date register was modified'
+	)]
+	public ?string $updated_at;
 }

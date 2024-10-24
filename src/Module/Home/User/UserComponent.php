@@ -39,7 +39,7 @@ class UserComponent extends OComponent {
 		$user = $this->us->getUser($id_user);
 		$list = $this->ps->getPhotos($user->get('id'));
 
-		$this->name = $user->get('user');
+		$this->name = $user->user;
 		$this->photo_list = new PhotoListComponent(['list' => $list]);
 	}
 }

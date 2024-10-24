@@ -2,8 +2,8 @@
 	<ul class="photos">
 <?php foreach ($list as $photo): ?>
 		<li>
-			<a href="<?php echo $photo->get('url') ?>" rel="noreferrer" target="_blank">
-				<img src="/photo/<?php echo $photo ?>" alt="<?php echo $photo->get('alt') ?>">
+			<a href="<?php echo $photo->url ?>" rel="noreferrer" target="_blank">
+				<img src="/photo/<?php echo $photo ?>" alt="<?php echo $photo->alt ?>">
 			</a>
 			<p>
 				Tags: <?php echo implode(', ', $photo->getTags()) ?>

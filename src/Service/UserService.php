@@ -22,18 +22,7 @@ class UserService extends OService {
 	 * @return array List of all users
 	 */
 	public function getUsers(): array {
-		$db = new ODB();
-		$sql = "SELECT * FROM `user`";
-		$db->query($sql);
-		$list = [];
-
-		while ($res=$db->next()) {
-			$user = new User();
-			$user->update($res);
-			array_push($list, $user);
-		}
-
-		return $list;
+		return User::all();
 	}
 
 	/**
@@ -44,8 +33,7 @@ class UserService extends OService {
 	 * @return User Asked user
 	 */
 	public function getUser(int $id): User {
-		$user = new User();
-		$user->find(['id'=>$id]);
+		$user = User::findOne(['id'=>$id]);
 
 		return $user;
 	}

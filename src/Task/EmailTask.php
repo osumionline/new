@@ -43,7 +43,7 @@ class EmailTask extends OTask {
 	 *
 	 * @return void
 	 */
-	public function run(array $options=[]): void {
+	public function run(array $options = []): void {
 		if (count($options) === 0) {
 			echo "\nYou have to choose (at least) an option.\n\n";
 			echo "  Options:\n";
