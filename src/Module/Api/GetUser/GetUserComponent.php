@@ -26,7 +26,7 @@ class GetUserComponent extends OComponent {
 	 * @param ORequest $req Request object with method, headers, parameters and filters used
 	 * @return void
 	 */
-	public function run(ORequest $req):void {
+	public function run(ORequest $req): void {
 		$u = $this->us->getUser($req->getParamInt('id'));
 
 		if (is_null($u)) {

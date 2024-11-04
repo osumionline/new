@@ -97,9 +97,7 @@ class Photo extends OModel {
 		$db->query($sql, [$this->id]);
 
 		while ($res = $db->next()) {
-			$tag = Tag::from($res);
-
-			$list[] = $tag;
+			$list[] = Tag::from($res);
 		}
 
 		$this->tags = $list;

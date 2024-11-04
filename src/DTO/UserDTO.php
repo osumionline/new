@@ -6,23 +6,16 @@ use Osumi\OsumiFramework\Core\ODTO;
 use Osumi\OsumiFramework\Web\ORequest;
 
 class UserDTO implements ODTO{
-	private int $id_user = -1;
-
-	public function getIdUser(): int {
-		return $this->id_user;
-	}
-	private function setIdUser(int $id_user): void {
-		$this->id_user = $id_user;
-	}
+	public int $id_user = -1;
 
 	public function isValid(): bool {
-		return ($this->getIdUser() != -1);
+		return ($this->id_user !== -1);
 	}
 
 	public function load(ORequest $req): void {
 		$id_user = $req->getParamInt('id');
 		if (!is_null($id_user)) {
-			$this->setIdUser($id_user);
+			$this->id_user = $id_user;
 		}
 	}
 }

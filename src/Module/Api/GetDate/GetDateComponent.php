@@ -23,7 +23,7 @@ class GetDateComponent extends OComponent {
 	 * @param ORequest $req Request object with method, headers, parameters and filters used
 	 * @return void
 	 */
-	public function run(ORequest $req):void {
+	public function run(ORequest $req): void {
 		$this->date = $this->us->getLastUpdate();
 	}
 }

@@ -14,7 +14,7 @@ class PhotoService extends OService {
 	 * @return array Photo list
 	 */
 	public function getPhotos(int $id): array {
-		$photos = Photo::where([`id_user` => $id]);
+		$photos = Photo::where(['id_user' => $id]);
 
 		$this->log->debug('Photos: '.count($photos));
 		return $photos;

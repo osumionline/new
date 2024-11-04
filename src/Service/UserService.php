@@ -3,7 +3,6 @@
 namespace Osumi\OsumiFramework\App\Service;
 
 use Osumi\OsumiFramework\Core\OService;
-use Osumi\OsumiFramework\DB\ODB;
 use Osumi\OsumiFramework\App\Model\User;
 
 class UserService extends OService {
@@ -33,8 +32,6 @@ class UserService extends OService {
 	 * @return User Asked user
 	 */
 	public function getUser(int $id): User {
-		$user = User::findOne(['id'=>$id]);
-
-		return $user;
+		return User::findOne(['id' => $id]);
 	}
 }

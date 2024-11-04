@@ -19,7 +19,7 @@ class Tag extends OModel {
 		max: 20,
 		nullable: false
 	)]
-	public ?string $ext;
+	public ?string $name;
 
 	#[OField(
 		comment: 'User Id',
