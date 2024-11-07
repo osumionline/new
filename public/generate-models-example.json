@@ -1,0 +1,108 @@
+{
+  "model": [
+    {
+      "name": "product",
+      "fields": [
+        {
+          "name": "id",
+          "comment": "Unique ID for each product",
+          "decorator": "OPK"
+        },
+        {
+          "name": "name",
+          "comment": "Product name",
+          "decorator": "OField",
+          "nullable": false,
+          "max": 100,
+          "attribute_type": "string"
+        },
+        {
+          "name": "description",
+          "comment": "Product description",
+          "decorator": "OField",
+          "nullable": true,
+          "default": null,
+          "type": "OField::LONGTEXT",
+          "attribute_type": "string"
+        },
+        {
+          "name": "price",
+          "comment": "Product price",
+          "decorator": "OField",
+          "nullable": false,
+          "attribute_type": "float"
+        },
+        {
+          "name": "is_new",
+          "comment": "Indicates if the product is new",
+          "decorator": "OField",
+          "nullable": false,
+          "default": true,
+          "attribute_type": "bool"
+        },
+        {
+          "name": "expiration_date",
+          "comment": "Product expiration date",
+          "decorator": "OField",
+          "nullable": true,
+          "default": null,
+          "type": "OField::DATE",
+          "attribute_type": "string"
+        },
+        {
+          "name": "created_at",
+          "comment": "Record creation date",
+          "decorator": "OCreatedAt"
+        },
+        {
+          "name": "updated_at",
+          "comment": "Last modified date of the record",
+          "decorator": "OUpdatedAt"
+        }
+      ],
+      "refs": [
+        {
+          "to": "product_photo",
+          "field_from": "id",
+          "field_to": "id_product"
+        }
+      ]
+    },
+    {
+      "name": "product_photo",
+      "fields": [
+        {
+          "name": "id",
+          "comment": "Unique ID for each product photo",
+          "decorator": "OPK"
+        },
+        {
+          "name": "id_product",
+          "comment": "Product ID to which the photo belongs",
+          "decorator": "OField",
+          "nullable": false,
+          "attribute_type": "int",
+          "ref": "product.id"
+        },
+        {
+          "name": "name",
+          "comment": "Photo file name",
+          "decorator": "OField",
+          "nullable": false,
+          "max": 100,
+          "attribute_type": "string"
+        },
+        {
+          "name": "created_at",
+          "comment": "Record creation date",
+          "decorator": "OCreatedAt"
+        },
+        {
+          "name": "updated_at",
+          "comment": "Last modified date of the record",
+          "decorator": "OUpdatedAt"
+        }
+      ]
+    }
+  ]
+}

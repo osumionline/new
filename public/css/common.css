@@ -50,15 +50,13 @@ section {
 		margin-top: 16px;
 		box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
 
-		&.token-box {
-			min-height: 75px;
-		}
+		.layout-link {
+			color: #000;
+			text-decoration: none;
 
-		.token {
-			width: 100%;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			margin-top: 16px;
+			&:hover {
+				color: blue;
+			}
 		}
 
 		& > h1 {

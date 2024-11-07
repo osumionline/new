@@ -11,4 +11,8 @@ class PhotoListComponent extends OComponent {
 		parent::__construct($vars);
 		$this->addInlineCss('photo_list');
 	}
+
+	public function run(): void {
+		// If a component has a "run" method, it will be executed before displaying its final result.
+	}
 }
